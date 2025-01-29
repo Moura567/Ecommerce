@@ -1,0 +1,51 @@
+﻿@model WebApplication1.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4" style="width: 400px;">
+        <h2 class="text-center mb-4">Login</h2>
+
+        <form asp-action="Login">
+            @if (ViewData.ModelState.ErrorCount > 0)
+            {
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+            }
+
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="form-label fw-bold"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter your username" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Password" class="form-label fw-bold"></label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check mb-3">
+                <input class="form-check-input" asp-for="RememberMe" id="rememberMe" />
+                <label class="form-check-label" for="rememberMe">@Html.DisplayNameFor(model => model.RememberMe)</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <h6>Or login with:</h6>
+            <a asp-controller="Account" asp-action="GoogleLogin" class="btn btn-light border w-100 d-flex align-items-center justify-content-center">
+                <img src="/images/Assets/google-logo.png" alt="Google Logo" class="me-2" width="20">
+                Log in with Google
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

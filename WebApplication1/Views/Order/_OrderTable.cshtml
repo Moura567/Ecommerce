@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Order>
+@Html.AntiForgeryToken()
+<h2>Orders List</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>There is no orders.</p>
+}
+else
+{
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    <input type="checkbox" id="selectAll" />
+                </th>
+                <th>Order Maker</th>
+                <th>Order Number</th>
+                <th>Created At</th>
+                <th>Mobile Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Total Price</th>
+                <th>Payment Method</th>
+                <th>Order State</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" class="order-checkbox" data-order-id="@item.Id" />
+                    </td>
+                    <td class="username">@userrepo.GetNameById(item.UserId)</td>
+                    <td>@item.Id</td>
+                    <td>@item.CreateDate</td>
+                    <td class="mobile-number">@item.MobileNumber</td>
+                    <td class="email">@item.Email</td>
+                    <td>@item.Address</td>
+                    <td>
+                        <span class="total-price" id="totalPrice_@item.Id">@item.OrderPrice</span>
+                    </td>
+                    <td>@item.PaymentMethod</td>
+                    <td>
+                        <select class="form-control order-state-dropdown" data-order-id="@item.Id">
+                            <option value="Pending" selected="@(item.OrderState == "Pending" ? "selected" : null)">Pending</option>
+                            <option value="Confirmed" selected="@(item.OrderState == "Confirmed" ? "selected" : null)">Confirmed</option>
+                            <option value="Processing" selected="@(item.OrderState == "Processing" ? "selected" : null)">Processing</option>
+                            <option value="Shipped/Dispatched" selected="@(item.OrderState == "Shipped/Dispatched" ? "selected" : null)">Shipped/Dispatched</option>
+                            <option value="Delivered" selected="@(item.OrderState == "Delivered" ? "selected" : null)">Delivered</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger delete-order" data-order-id="@item.Id">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button id="deleteSelectedOrders" class="btn btn-danger">Delete Selected Orders</button>
+}

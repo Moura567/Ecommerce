@@ -1,0 +1,82 @@
+﻿@model Order
+@Html.AntiForgeryToken()
+
+<div class="order-confirmation-container mt-5">
+    <h2 class="order-confirmation-title text-center mb-4">Order Confirmation</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (Model == null)
+    {
+        <div class="alert alert-danger text-center" role="alert">
+            Your order is empty.
+        </div>
+    }
+    else
+    {
+        <div class="order-card shadow-sm">
+            <div class="order-card-body">
+                <div class="row">
+                    <div class="col-md-6 order-details-section">
+                        <h4 class="order-details-title mb-3">Order Details</h4>
+                        <table class="table table-borderless order-details-table">
+                            <tbody>
+                                <tr>
+                                    <th>Create Date</th>
+                                    <td>@Html.DisplayFor(model => model.CreateDate)</td>
+                                </tr>
+                                <tr>
+                                    <th>Mobile Number</th>
+                                    <td>@Html.DisplayFor(model => model.MobileNumber)</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>@Html.DisplayFor(model => model.Email)</td>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <td>@Html.DisplayFor(model => model.Address)</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Price</th>
+                                    <td class="text-success">@Html.DisplayFor(model => model.OrderPrice)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-6 payment-method-section">
+                        <h4 class="payment-method-title mb-3">Payment Method</h4>
+                        <form asp-action="OrderConfirmation" method="post">
+                            @Html.HiddenFor(model => model.Id)
+                            <div class="form-group">
+                                <label for="PaymentMethod" class="font-weight-bold">Choose a Payment Method</label>
+                                @Html.DropDownListFor(
+                                         model => model.PaymentMethod,
+                                         new SelectList(new List<SelectListItem>
+                            {
+                            new SelectListItem { Text = "Pay using Visa", Value = "Visa" },
+                            new SelectListItem { Text = "Cash on Delivery", Value = "Cash" }
+                            }, "Value", "Text"),
+                                         "Select a payment method",
+                                         new { @class = "form-control custom-select", id = "PaymentMethod" }
+                                         )
+                            </div>
+
+                            <div class="form-group text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-md w-100">Confirm Order</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a asp-action="Index" asp-controller="Home" class="btn btn-outline-secondary btn-sm">Back to Home</a>
+        </div>
+    }
+</div>
+

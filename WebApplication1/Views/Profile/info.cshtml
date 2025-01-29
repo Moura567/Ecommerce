@@ -1,0 +1,44 @@
+﻿@model WebApplication1.ViewModels.ProfileViewModel
+
+@{
+    ViewData["Title"] = "Profile Info";
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
+
+<div class="container py-4">
+    <div class="ProfileCard shadow-lg border-0">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0 text-center">Profile Information</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row mb-4">
+                <dt class="col-sm-3 fw-bold text-muted">Name:</dt>
+                <dd class="col-sm-9 text-dark">@Model.Name</dd>
+
+                <dt class="col-sm-3 fw-bold text-muted">Role:</dt>
+                <dd class="col-sm-9 text-dark">@Model.role</dd>
+
+                <dt class="col-sm-3 fw-bold text-muted">Email:</dt>
+                <dd class="col-sm-9 text-dark">@Model.email</dd>
+
+                <dt class="col-sm-3 fw-bold text-muted">Phone:</dt>
+                <dd class="col-sm-9 text-dark">@Model.phone</dd>
+
+                <dt class="col-sm-3 fw-bold text-muted">Address:</dt>
+                <dd class="col-sm-9 text-dark">@Model.address</dd>
+            </dl>
+
+            <div class="d-flex justify-content-center gap-3">
+                <a asp-action="Edit" asp-route-name="@Model.Name" class="btn btn-outline-primary">
+                    <i class="bi bi-pencil-square"></i> Edit Profile
+                </a>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-house-door"></i> Back to Home
+                </a>
+                <a asp-controller="Order" asp-action="GetOrder" class="btn btn-outline-info">
+                    <i class="bi bi-bag"></i> View Orders
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

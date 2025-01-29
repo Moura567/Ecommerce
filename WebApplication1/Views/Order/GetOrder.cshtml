@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Order>
+@Html.AntiForgeryToken()
+<h2>Shopping Cart</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Order Number</th>
+                <th>Created At</th>
+                <th>Mobile Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Total Price</th>
+                <th>Payment Method</th>
+                <th>Order State</th>
+                <th> </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.CreateDate</td>
+                    <td>@item.MobileNumber</td>
+                    <td>@item.Email</td>
+                    <td>@item.Address</td>
+                    <td>
+                        <span class="total-price" id="totalPrice_@item.Id">@item.OrderPrice</span>
+                    </td>
+                    <td>@item.PaymentMethod</td>
+
+                    <td>
+                        @item.OrderState
+                    </td>
+                    <td>
+                        @Html.ActionLink(
+                                 "Cancel Order",
+                                 "CancelOrder",
+                                 new { name = item.Id },
+                                 new { @class = "btn btn-danger" }
+                                 )
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

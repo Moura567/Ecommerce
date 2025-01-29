@@ -1,0 +1,81 @@
+﻿.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.thead-dark th {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+#categoryFilter {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+    #categoryFilter:focus {
+        border-color: #0056b3;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+/* Style for the reset button */
+#resetFilter {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    #resetFilter:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+/* Add some spacing and alignment */
+.input-group {
+    max-width: 400px; /* Adjust the width as needed */
+}
+
+.form-label {
+    margin-bottom: 10px;
+    color: #333;
+}

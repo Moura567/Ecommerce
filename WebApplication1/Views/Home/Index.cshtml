@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebApplication1.Models.product>
+
+@{
+    ViewData["Title"] = "Welcome to Our Shop!";
+}
+
+@if(User.Identity.IsAuthenticated){
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-success">@TempData["Error"]</div>
+}
+}
+
+
+<div class="container">
+    <!-- Hero Section -->
+    <div class="text-center mt-4">
+        <h1 class="display-4">Welcome to Our Online Store!</h1>
+        <p>Find the best products for you at unbeatable prices.</p>
+        <a href="@Url.Action("Index","Product")" class="btn btn-primary btn-lg">Shop Now</a>
+    </div>
+    <!-- Featured Products -->
+<div class="row mt-5">
+    <div class="col-12 text-center">
+        <h2>Featured Products</h2>
+        <p>Check out some of our bestsellers</p>
+    </div>
+
+    <!-- Loop through first 3 featured products -->
+    @foreach (var product in Model.Take(3))
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <!-- Add h-100 to ensure all cards are of equal height -->
+                <!-- Improved Image -->
+                <img class="card-img-top product-image" src="~/images/@product.image" alt="@product.Name">
+
+                <div class="card-body d-flex flex-column">
+                    <!-- Flex column for equal card height -->
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text"><strong>@product.price.ToString("C")</strong></p>
+                    <a href="@Url.Action("Details", "Product", new { id = product.Id })" class="btn btn-info mt-auto">View Details</a> <!-- mt-auto ensures button stays at the bottom -->
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+    <!-- Special Offers Section -->
+    <div class="mt-5">
+        <div class="alert alert-info text-center">
+            <h3>Special Offers!</h3>
+            <p>Limited time offers on selected products. Don't miss out!</p>
+            <a href="@Url.Action("Index", "Product")" class="btn btn-warning btn-lg">Browse Special Offers</a>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <!-- Testimonials Section -->
+    <div class="mt-5">
+        <div class="text-center">
+            <h2>What Our Customers Are Saying</h2>
+            <p>We pride ourselves on excellent customer service and high-quality products.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <blockquote class="blockquote">
+                    <p class="mb-0">"Amazing quality products and fast delivery. Highly recommend!"</p>
+                    <footer class="blockquote-footer">John Doe</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4 mb-4">
+                <blockquote class="blockquote">
+                    <p class="mb-0">"Best online shopping experience I've had. Great deals every time!"</p>
+                    <footer class="blockquote-footer">Jane Smith</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4 mb-4">
+                <blockquote class="blockquote">
+                    <p class="mb-0">"Their customer service is top-notch. I'm a loyal customer!"</p>
+                    <footer class="blockquote-footer">Mark Wilson</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="mt-5 text-center">
+        <p>&copy; 2025 Your Store. All Rights Reserved.</p>
+    </footer>
+</div>
+

@@ -1,0 +1,68 @@
+﻿@model WebApplication1.ViewModels.ProductViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProductViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Edit">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="amount" class="control-label"></label>
+                <input asp-for="amount" class="form-control" />
+                <span asp-validation-for="amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoryId" class="control-label"></label>
+                <select asp-for="categoryId" class="form-control" asp-items="Model.Categories" ></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="imageuploder" class="control-label"></label>
+                <input asp-for="imageuploder" class="form-control"
+                       onchange="document.getElementById('FrontImagePrv').src = window.URL.createObjectURL(this.files[0])" />
+                <span asp-validation-for="imageuploder" class="text-danger"></span>
+                <img id="FrontImagePrv" src="~/images/@Model.image" alt="Logo Image" width="150" height="150" style="border:1px; margin-top: 20px; margin-left:120px;" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+
+            </div>
+            <div>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}

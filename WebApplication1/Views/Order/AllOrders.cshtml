@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Order>
+@Html.AntiForgeryToken()
+<link rel="stylesheet" href="~/css/AllOrder.css" asp-append-version="true" />
+<script src="~/js/Order.js"></script>
+
+<div class="mb-4">
+    <label for="orderStateFilter" class="form-label fw-bold">Filter by Order State:</label>
+    <div class="input-group">
+        <select id="orderStateFilter" class="form-select">
+            <option value="All">All States</option>
+            <option value="Pending">Pending</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Processing">Processing</option>
+            <option value="Shipped/Dispatched">Shipped/Dispatched</option>
+            <option value="Delivered">Delivered</option>
+        </select>
+        <button id="resetFilter" class="btn btn-outline-secondary" type="button">
+            <i class="fas fa-sync-alt"></i> Reset
+        </button>
+    </div>
+</div>
+
+
+<div id="orderListContainer">
+    @Html.PartialAsync("_OrderTable", Model)
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

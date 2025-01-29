@@ -1,0 +1,83 @@
+﻿@model WebApplication1.ViewModels.ProfileViewModel
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <h3 class="text-center mb-4">Edit Profile</h3>
+
+                @if (TempData["Faild"] != null)
+                {
+                    <div class="alert alert-danger text-center">@TempData["Faild"]</div>
+                }
+
+                <form asp-action="Edit">
+                    @if (ViewData.ModelState.ErrorCount > 0)
+                    {
+                        <div asp-validation-summary="All" class="alert alert-danger"></div>
+                    }
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Full Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="email" class="form-label">Email Address</label>
+                        <input asp-for="email" type="email" class="form-control" />
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="phone" class="form-label">Phone Number</label>
+                        <input asp-for="phone" type="tel" class="form-control" />
+                        <span asp-validation-for="phone" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="address" class="form-label">Address</label>
+                        <input asp-for="address" class="form-control" />
+                        <span asp-validation-for="address" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border-radius: 10px;
+            border: none;
+        margin-left: 8em;
+    }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .btn {
+            border-radius: 5px;
+        }
+    </style>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

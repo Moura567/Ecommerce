@@ -1,0 +1,35 @@
+﻿#orderStateFilter {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+    #orderStateFilter:focus {
+        border-color: #0056b3;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+/* Style for the reset button */
+#resetFilter {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    #resetFilter:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+/* Add some spacing and alignment */
+.input-group {
+    max-width: 400px; /* Adjust the width as needed */
+}
+
+.form-label {
+    margin-bottom: 10px;
+    color: #333;
+}

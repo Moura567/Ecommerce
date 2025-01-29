@@ -1,0 +1,385 @@
+﻿/* General Styles */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    body.dark-mode {
+        background-color: #121212;
+        color: #fff;
+    }
+
+a {
+    color: #0366d6;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode a {
+    color: #132131;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .btn-primary {
+    background-color: #1b6ec2;
+    border-color: #31363b;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .nav-pills .nav-link.active,
+body.dark-mode .nav-pills .show > .nav-link {
+    background-color: #3a3f44;
+    border-color: #31363b;
+}
+
+.border-top,
+.border-bottom {
+    border-color: #e5e5e5;
+    transition: border-color 0.3s ease;
+}
+
+body.dark-mode .border-top,
+body.dark-mode .border-bottom {
+    border-color: #333;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    transition: box-shadow 0.3s ease;
+}
+
+body.dark-mode .box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(255, 255, 255, .1);
+}
+
+/* Navbar */
+.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Cart */
+#cartCount {
+    font-size: 12px;
+    padding: 5px;
+}
+
+/* Image Styles */
+.img {
+    width: 80px;
+    height: auto;
+}
+
+.product-image {
+    padding: 10px;
+    width: 175px;
+    height: 230px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Footer */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+/* Card Styles */
+.card,
+.cardd,
+.ProfileCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease; /* For dark mode */
+}
+
+body.dark-mode .card,
+body.dark-mode .cardd,
+body.dark-mode .ProfileCard {
+    background-color: #212529;
+    color: #eee;
+}
+
+.card {
+    width: 335px;
+}
+
+.cardd {
+    width: 550px;
+    margin-left: 24em; /* Consider responsive units */
+}
+
+.ProfileCard {
+    width: 405px;
+}
+
+.card-body {
+    flex: 1;
+}
+
+/* Blockquote */
+.blockquote {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-left: 5px solid #007bff;
+    margin-bottom: 20px;
+    font-style: italic;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* For dark mode */
+}
+
+body.dark-mode .blockquote {
+    background-color: #212529;
+    border-left-color: #66b3ff;
+    color: #eee;
+}
+
+
+.blockquote-footer {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .blockquote-footer {
+    color: #ccc;
+}
+
+/* Utility Classes */
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+/* Other */
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+body.dark-mode .navbar {
+    background-color: #121212 !important; 
+    color: white;
+}
+
+.navbar {
+    padding-top: 15px;
+}
+    body.dark-mode .navbar .navbar-nav .nav-link {
+        color: white !important;
+    }
+
+    body.dark-mode .navbar .navbar-brand {
+        color: white !important;
+    }
+
+body.dark-mode .table {
+    color: #eee;
+}
+
+    body.dark-mode .table th {
+        color: #ccc;
+    }
+
+    body.dark-mode .table td:nth-child(2) {
+        color: white;
+    }
+
+/* Dark mode styles with .dark-mode class */
+.dark-mode .table {
+    --bs-table-striped-color: #fff; /* White color for striped rows in dark mode */
+    --bs-table-hover-color: #fff;
+    --bs-table-hover-bg: rgb(39 34 34 / 67%);
+}
+
+ .dark-mode .form-label {
+    color: #fff;
+}
+
+/* Basic Button Styles */
+#toggleDarkMode {
+    font-size: 18px;
+    background-color: #1b6ec2;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 35px;
+    height: 35px;
+    outline: none;
+    position: relative;
+    right: 10px;
+}
+
+    /* Hover Effect */
+    #toggleDarkMode:hover {
+        background-color: #155a8a;
+        transform: translateY(-2px);
+    }
+
+/* Dark Mode Styles */
+body.dark-mode #toggleDarkMode {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+/* Icon Transition Effect */
+#toggleDarkMode .fas {
+    transition: transform 0.3s ease;
+}
+
+/* Dark mode icon change */
+body.dark-mode #modeIcon {
+    content: "\f185"; /* Unicode for the sun icon */
+}
+
+.dark-mode .text-dark {
+    --bs-text-opacity: 1;
+    color: rgb(138 182 226) !important;
+}
+
+body.dark-mode .ProfileCard a {
+    color: #fff;
+}
+
+.order-confirmation-container {
+    padding: 20px;
+    background-color: #e1e1e1;
+    border-radius: 25px;
+}
+
+.order-confirmation-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #007bff;
+}
+
+.alert {
+    font-size: 1rem;
+    padding: 12px;
+}
+
+.order-card {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.dark-mode .order-card-body {
+    background-color: #121212;
+    border-radius: 20px;
+}
+
+.dark-mode .order-confirmation-container {
+    background-color: #1e1f20;
+    border-radius: 25px;
+}
+
+.dark-mode a.btn.btn-outline-secondary.btn-sm {
+    color: azure;
+}
+
+.order-card-body {
+    padding: 20px;
+    background-color: #eceff3;
+    border-radius: 25px;
+}
+
+.order-details-section,
+.payment-method-section {
+    padding: 15px;
+}
+
+.order-details-title,
+.payment-method-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.order-details-table th,
+.order-details-table td {
+    padding: 8px;
+    vertical-align: middle;
+}
+
+.order-details-table th {
+    width: 30%;
+}
+
+.text-success {
+    color: #28a745 !important;
+}
+
+.custom-select {
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+.btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+.btn-md {
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.btn-sm {
+    font-size: 0.875rem;
+    padding: 8px;
+}
