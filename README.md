@@ -49,7 +49,10 @@ The system is designed to be scalable, secure, and highly customizable to fit va
    - **Service Layer**: The **Service** classes encapsulate the business logic and interact with the repository to retrieve and manage data, providing a clear separation of concerns.
 
 ## Installation
-
+run script sql file
+Colne Repo
+add migration and update database
+run
 ### Prerequisites
 - **.NET 8** SDK: To develop and run the application.
 - **SQL Server or another relational database**: For storing user, product, and order data.
