@@ -1,4 +1,4 @@
-﻿function submitAddToCartForm(form) {
+function submitAddToCartForm(form) {
     const formData = new FormData(form);
 
     fetch(form.action, {
@@ -226,7 +226,6 @@ toggleButton.addEventListener('click', function () {
     }
 });
 
-
 document.addEventListener('DOMContentLoaded', function () {
     const orderListContainer = document.getElementById('orderListContainer');
 
@@ -244,9 +243,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('selectAll').addEventListener('change', toggleAllCheckboxes);
+
     document.getElementById('deleteSelectedOrders').addEventListener('click', deleteSelectedOrders);
     document.getElementById('searchInput').addEventListener('input', searchOrders);
     document.getElementById('orderStateFilter').addEventListener('change', filterOrdersByState);
+    document.getElementById('resetFilter').addEventListener('click', resetFilters);
 });
 
 function updateOrderState(dropdown) {
@@ -321,7 +322,7 @@ function searchOrders() {
         .then(data => document.getElementById('orderListContainer').innerHTML = data)
         .catch(() => alert('Error loading search results.'));
 }
-document.getElementById('resetFilter').addEventListener('click', resetFilters);
+
 function resetFilters() {
     document.getElementById('orderStateFilter').value = 'All';
 
@@ -329,9 +330,11 @@ function resetFilters() {
         .then(response => response.text())
         .then(data => {
             document.getElementById('orderListContainer').innerHTML = data;
+            document.getElementById('selectAll').addEventListener('change', toggleAllCheckboxes);
         })
         .catch(() => alert('Error resetting filters.'));
 }
+
 function filterOrdersByState() {
     const orderState = this.value;
     fetch(`/Order/SearchOrders?orderState=${encodeURIComponent(orderState)}`)
