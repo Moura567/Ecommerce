@@ -255,6 +255,27 @@ namespace WebApplication1.Controllers
         }
 
 
+              public IActionResult CancelOrder(int orderId)
+      {
+          var order = orderRepo.GetOrder(orderId);
+          if (order != null)
+          {
+              if (order.OrderState == "Pending")
+              {
+                  TempData["Order"] = "Order Canceled";
+                  orderRepo.CancelOrder(orderId);
+              }
+
+              else
+              {
+                  TempData["Order"] = "Sorry now we can't cancel the order";
+                  return RedirectToAction("Index", "Home");
+              }
+          }
+          return RedirectToAction("Index", "Home");
+      }
+
+
 
 
 
