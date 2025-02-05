@@ -41,13 +41,13 @@ else
                         @item.OrderState
                     </td>
                     <td>
-                        @Html.ActionLink(
-                                 "Cancel Order",
-                                 "CancelOrder",
-                                 new { name = item.Id },
-                                 new { @class = "btn btn-danger" }
-                                 )
-                    </td>
+     @Html.ActionLink(
+              "Cancel Order",
+              "CancelOrder",
+              new { orderid = item.Id },
+              new { @class = "btn btn-danger" }
+              )
+ </td>
                 </tr>
             }
         </tbody>
