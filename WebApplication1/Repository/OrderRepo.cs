@@ -4,7 +4,7 @@ namespace WebApplication1.Repository
 {
     public class OrderRepo(Context context) : IOrderRepo
     {
-        private readonly Context context;
+        private readonly Context context=context;
 
         public void AddOrder(OrderItem orderItem)
         {
