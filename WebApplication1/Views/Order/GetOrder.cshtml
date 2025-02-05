@@ -19,7 +19,6 @@ else
                 <th>Total Price</th>
                 <th>Payment Method</th>
                 <th>Order State</th>
-                <th> </th>
 
             </tr>
         </thead>
@@ -40,14 +39,7 @@ else
                     <td>
                         @item.OrderState
                     </td>
-                    <td>
-     @Html.ActionLink(
-              "Cancel Order",
-              "CancelOrder",
-              new { orderid = item.Id },
-              new { @class = "btn btn-danger" }
-              )
- </td>
+                   
                 </tr>
             }
         </tbody>
